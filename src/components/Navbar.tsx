@@ -7,8 +7,8 @@ const fadeIn = keyframes`
   to { opacity: 1; }
 `;
 
-const DrawerOverlay = styled.div<{ open: boolean }>`
-  display: ${({ open }) => (open ? 'block' : 'none')};
+const DrawerOverlay = styled.div<{ $open: boolean }>`
+  display: ${({ $open }) => ($open ? 'block' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@ const DrawerOverlay = styled.div<{ open: boolean }>`
   animation: ${fadeIn} 0.2s;
 `;
 
-const Drawer = styled.aside<{ open: boolean }>`
+const Drawer = styled.aside<{ $open: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -28,18 +28,18 @@ const Drawer = styled.aside<{ open: boolean }>`
   background: #fff;
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   z-index: 300;
-  transform: translateX(${({ open }) => (open ? '0' : '-100%')});
+  transform: translateX(${({ $open }) => ($open ? '0' : '-100%')});
   transition: transform 0.2s;
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem;
 `;
 
-const NavLink = styled.a<{ active?: boolean }>`
-  color: ${({ active, theme }) => (active ? theme.colors.primary : '#222')};
+const NavLink = styled.a<{ $active?: boolean }>`
+  color: ${({ $active, theme }) => ($active ? theme.colors.primary : '#222')};
   text-decoration: none;
   font-size: 1.2rem;
-  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+  font-weight: ${({ $active }) => ($active ? 'bold' : 'normal')};
   margin-bottom: 1.5rem;
   cursor: pointer;
   transition: color 0.15s;
@@ -59,11 +59,11 @@ const CloseBtn = styled.button`
 `;
 
 interface NavbarProps {
-  open: boolean;
+  $open: boolean;
   onClose: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ open, onClose }) => {
+const Navbar: React.FC<NavbarProps> = ({ $open, onClose }) => {
   const router = useRouter();
 
   const handleNav = (path: string) => {
@@ -73,13 +73,14 @@ const Navbar: React.FC<NavbarProps> = ({ open, onClose }) => {
 
   return (
     <>
-      <DrawerOverlay open={open} onClick={onClose} />
-      <Drawer open={open}>
+      <DrawerOverlay $open={$open} onClick={onClose} />
+      <Drawer $open={$open}>
         <CloseBtn aria-label="Close navigation menu" onClick={onClose}>&times;</CloseBtn>
-        <NavLink active={router.pathname === '/'} onClick={() => handleNav('/')}>Home</NavLink>
-        <NavLink active={router.pathname === '/restaurants'} onClick={() => handleNav('/restaurants')}>Restaurants</NavLink>
-        <NavLink active={router.pathname === '/about-us'} onClick={() => handleNav('/about-us')}>About Us</NavLink>
-        <NavLink active={router.pathname === '/contact-us'} onClick={() => handleNav('/contact-us')}>Contact Us</NavLink>
+        <NavLink $active={router.pathname === '/'} onClick={() => handleNav('/')}>Home</NavLink>
+        <NavLink $active={router.pathname === '/fabrica'} onClick={() => handleNav('/fabrica')}>Fabrica</NavLink>
+        <NavLink $active={router.pathname === '/zanzibar'} onClick={() => handleNav('/zanzibar')}>Zanzibar</NavLink>
+        <NavLink $active={router.pathname === '/eltorro'} onClick={() => handleNav('/eltorro')}>El Torro</NavLink>
+        <NavLink $active={router.pathname === '/babylon'} onClick={() => handleNav('/babylon')}>Babylon</NavLink>
       </Drawer>
     </>
   );
