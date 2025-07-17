@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from './Footer';
 import styled from 'styled-components';
-import Sidebar from './Sidebar';
 import FloatingNavbar from './FloatingNavbar';
 
 const Main = styled.main`
@@ -11,11 +10,11 @@ const Main = styled.main`
   align-items: center;
   justify-content: flex-start;
   background: #fff;
-  padding-top: 80px; /* Account for fixed navbar on desktop */
+  padding-top: 80px;
   width: 100%;
   
   @media (max-width: 768px) {
-    padding-top: 0; /* No padding on mobile since navbar is hidden */
+    padding-top: 70px;
   }
 `;
 
@@ -40,7 +39,6 @@ const ContentWrapper = styled.div`
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
     <FloatingNavbar />
-    <Sidebar />
     <Main>
       <ContentWrapper>
         {children}
