@@ -25,6 +25,8 @@ export interface Restaurant {
     accent: string;
     background: string;
   };
+  metaTitle: string;
+  metaDescription: string;
 }
 
 export const restaurants: Restaurant[] = [
@@ -65,6 +67,8 @@ export const restaurants: Restaurant[] = [
       accent: '#2C1810',
       background: '#FDFBF7',
     },
+    metaTitle: "Fabrica - Brunchy Loft Vibes | Fabrica Group",
+    metaDescription: "A sun-drenched loft space where artisanal coffee meets elevated brunch. Think exposed brick, hanging plants, and the perfect spot for your morning ritual."
   },
   {
     id: 'zanzibar',
@@ -103,6 +107,8 @@ export const restaurants: Restaurant[] = [
       accent: '#1A2E0F',
       background: '#F0F7ED',
     },
+    metaTitle: "Zanzibar - Jungle Cocktail Bar | Fabrica Group",
+    metaDescription: "Step into a tropical paradise where exotic cocktails flow freely. Lush greenery, bamboo accents, and the sounds of distant drums create an immersive escape."
   },
   {
     id: 'eltorro',
@@ -141,6 +147,8 @@ export const restaurants: Restaurant[] = [
       accent: '#4A0000',
       background: '#FFF8F0',
     },
+    metaTitle: "El Torro - Spanish Steakhouse | Fabrica Group",
+    metaDescription: "Authentic Spanish flavors meet premium steaks in an elegant setting. Rustic charm with modern sophistication, where every meal is a celebration."
   },
   {
     id: 'babylon',
@@ -179,6 +187,8 @@ export const restaurants: Restaurant[] = [
       accent: '#654321',
       background: '#FDF5E6',
     },
+    metaTitle: "Babylon - Exotic Arabesque | Fabrica Group",
+    metaDescription: "A mystical journey through Middle Eastern flavors in an opulent setting. Rich spices, intricate patterns, and an atmosphere that transports you to ancient times."
   },
   {
     id: 'antar',
@@ -217,5 +227,7 @@ export const restaurants: Restaurant[] = [
       accent: '#34495E',
       background: '#F8F9FA',
     },
+    metaTitle: "Antar – Forest‑Nestled Vegan Escape | Fabrica Group",
+    metaDescription: "Step into a serene restaurant in the heart of nature. A forest‑nestled vegan café & restaurant — your place in the heart of nature."
   },
 ]; 

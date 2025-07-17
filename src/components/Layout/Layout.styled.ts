@@ -1,9 +1,6 @@
-import React from 'react';
-import Footer from './Footer';
-import styled from 'styled-components';
-import FloatingNavbar from './FloatingNavbar';
+import styled from "styled-components";
 
-const Main = styled.main`
+export const Main = styled.main`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,7 +15,7 @@ const Main = styled.main`
   }
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   width: 85%;
   max-width: 1600px;
   margin: 0 auto;
@@ -35,17 +32,3 @@ const ContentWrapper = styled.div`
     width: 95%;
   }
 `;
-
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <>
-    <FloatingNavbar />
-    <Main>
-      <ContentWrapper>
-        {children}
-      </ContentWrapper>
-    </Main>
-    <Footer />
-  </>
-);
-
-export default Layout; 

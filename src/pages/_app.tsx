@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { store } from '../store/store';
 import { theme } from '../styles/theme';
 import GlobalStyle from '../styles/global';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,12 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const JourneyContainer = styled.div`
+export const JourneyContainer = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 `;
 
-const HeroSection = styled.section`
+export const HeroSection = styled.section`
   height: 100vh;
   display: flex;
   align-items: center;
@@ -17,7 +16,7 @@ const HeroSection = styled.section`
   overflow: hidden;
 `;
 
-const HeroContent = styled.div`
+export const HeroContent = styled.div`
   max-width: 900px;
   padding: 0 2rem;
   z-index: 2;
@@ -28,7 +27,7 @@ const HeroContent = styled.div`
   }
 `;
 
-const HeroTitle = styled.h1`
+export const HeroTitle = styled.h1`
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: clamp(3rem, 7vw, 5rem);
   font-weight: 700;
@@ -38,7 +37,7 @@ const HeroTitle = styled.h1`
   letter-spacing: -0.02em;
 `;
 
-const HeroSubtitle = styled.p`
+export const HeroSubtitle = styled.p`
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: clamp(1.25rem, 3.5vw, 1.75rem);
   color: ${({ theme }) => theme.colors.text};
@@ -50,7 +49,7 @@ const HeroSubtitle = styled.p`
   margin-right: auto;
 `;
 
-const ScrollIndicator = styled.div`
+export const ScrollIndicator = styled.div`
   position: absolute;
   bottom: 3rem;
   left: 50%;
@@ -81,25 +80,3 @@ const ScrollIndicator = styled.div`
     font-size: 0.875rem;
   }
 `;
-
-const RestaurantJourney: React.FC = () => {
-  return (
-    <JourneyContainer>
-      <HeroSection>
-        <HeroContent>
-          <HeroTitle>Welcome to Fabrica Group</HeroTitle>
-          <HeroSubtitle>
-            Five unique restaurants, five distinct moods. From brunchy lofts to exotic escapes, 
-            discover your perfect dining experience in the heart of Yerevan.
-          </HeroSubtitle>
-        </HeroContent>
-        <ScrollIndicator>
-          <span>Scroll to explore</span>
-          <div>↓</div>
-        </ScrollIndicator>
-      </HeroSection>
-    </JourneyContainer>
-  );
-};
-
-export default RestaurantJourney; 

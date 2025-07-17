@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import FloatingNavbar from '../components/FloatingNavbar';
-import RestaurantJourney from '../components/RestaurantJourney';
-import RestaurantSlider from '../components/RestaurantSlider';
+import RestaurantJourney from '../components/RestaurantJourney/RestaurantJourney';
+import RestaurantSlider from '../components/RestaurantSlider/RestaurantSlider';
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <FloatingNavbar />
       <RestaurantJourney />
       <RestaurantSlider />
     </>

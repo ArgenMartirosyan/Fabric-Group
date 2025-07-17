@@ -1,16 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { useRouter } from 'next/router';
-import { restaurants } from '../data/restaurants';
+import styled from "styled-components";
+import { Swiper } from "swiper/react";
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-const SliderContainer = styled.div`
+export const SliderContainer = styled.div`
   width: 100%;
   padding: 2rem 0;
   position: relative;
@@ -20,7 +11,7 @@ const SliderContainer = styled.div`
   }
 `;
 
-const SliderTitle = styled.h2`
+export const SliderTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
@@ -34,7 +25,7 @@ const SliderTitle = styled.h2`
   }
 `;
 
-const StyledSwiper = styled(Swiper)`
+export const StyledSwiper = styled(Swiper)`
   width: 100%;
   padding: 1rem 0 3rem 0;
   
@@ -87,7 +78,7 @@ const StyledSwiper = styled(Swiper)`
   }
 `;
 
-const RestaurantCard = styled.div`
+export const RestaurantCard = styled.div`
   width: 100%;
   max-width: 350px;
   background: white;
@@ -117,7 +108,7 @@ const RestaurantCard = styled.div`
   }
 `;
 
-const CardImageContainer = styled.div`
+export const CardImageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 200px;
@@ -128,14 +119,14 @@ const CardImageContainer = styled.div`
   }
 `;
 
-const CardImage = styled.img`
+export const CardImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 `;
 
-const CardOverlay = styled.div`
+export const CardOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -154,7 +145,7 @@ const CardOverlay = styled.div`
   padding: 1rem;
 `;
 
-const CardContent = styled.div`
+export const CardContent = styled.div`
   padding: 1.5rem;
   
   @media (max-width: 768px) {
@@ -162,7 +153,7 @@ const CardContent = styled.div`
   }
 `;
 
-const RestaurantName = styled.h3`
+export const RestaurantName = styled.h3`
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: 1.5rem;
   font-weight: 600;
@@ -175,7 +166,7 @@ const RestaurantName = styled.h3`
   }
 `;
 
-const RestaurantTagline = styled.div<{ $color: string }>`
+export const RestaurantTagline = styled.div<{ $color: string }>`
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 0.875rem;
   font-weight: 600;
@@ -189,7 +180,7 @@ const RestaurantTagline = styled.div<{ $color: string }>`
   }
 `;
 
-const RestaurantDescription = styled.p`
+export const RestaurantDescription = styled.p`
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 0.9rem;
   line-height: 1.5;
@@ -202,7 +193,7 @@ const RestaurantDescription = styled.p`
   }
 `;
 
-const ExploreButton = styled.div`
+export const ExploreButton = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -228,80 +219,3 @@ const ExploreButton = styled.div`
     padding: 0.4rem 0.8rem;
   }
 `;
-
-const RestaurantSlider: React.FC = () => {
-  const router = useRouter();
-
-  const handleRestaurantClick = (restaurantId: string) => {
-    router.push(`/${restaurantId}`);
-  };
-
-  return (
-    <SliderContainer>
-      <SliderTitle>Our Restaurants</SliderTitle>
-      <StyledSwiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={24}
-        slidesPerView={1.3}
-        navigation={true}
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 1.5,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2.2,
-            spaceBetween: 24,
-          },
-          1024: {
-            slidesPerView: 2.8,
-            spaceBetween: 30,
-          },
-          1280: {
-            slidesPerView: 3,
-            spaceBetween: 32,
-          },
-        }}
-        loop={true}
-        grabCursor={true}
-        speed={600}
-      >
-        {restaurants.map((restaurant) => (
-          <SwiperSlide key={restaurant.id}>
-            <RestaurantCard onClick={() => handleRestaurantClick(restaurant.id)}>
-              <CardImageContainer>
-                <CardImage 
-                  src={restaurant.image} 
-                  alt={restaurant.name}
-                  className="card-image"
-                />
-                <CardOverlay className="card-overlay">
-                  <ExploreButton>
-                    Explore
-                    <span>→</span>
-                  </ExploreButton>
-                </CardOverlay>
-              </CardImageContainer>
-              <CardContent>
-                <RestaurantTagline $color={restaurant.colors.secondary}>
-                  {restaurant.tagline}
-                </RestaurantTagline>
-                <RestaurantName>{restaurant.name}</RestaurantName>
-                <RestaurantDescription>
-                  {restaurant.description}
-                </RestaurantDescription>
-              </CardContent>
-            </RestaurantCard>
-          </SwiperSlide>
-        ))}
-      </StyledSwiper>
-    </SliderContainer>
-  );
-};
-
-export default RestaurantSlider; 
