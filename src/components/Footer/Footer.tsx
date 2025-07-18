@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BottomSection, BrandSection, ContactEmail, Copyright, Description, FooterContainer, FooterContent, GroupTitle, Link, LinkGroup, LinkItem, LinkList, LinksSection, Logo, MainSection } from './Footer.styled';
+import Link from 'next/link';
+import { BottomSection, BrandSection, ContactEmail, Copyright, Description, FooterContainer, FooterContent, GroupTitle, StyledLink, LinkGroup, LinkItem, LinkList, LinksSection, Logo, MainSection } from './Footer.styled';
 
 
 
@@ -23,16 +24,24 @@ const Footer: React.FC = () => {
               <GroupTitle>Company</GroupTitle>
               <LinkList>
                 <LinkItem>
-                  <Link href="#our-story">Our Story</Link>
+                  <Link href="/about" passHref>
+                    <StyledLink>Our Story</StyledLink>
+                  </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link href="#careers">Join Our Team</Link>
+                  <Link href="/join-our-team" passHref>
+                    <StyledLink>Join Our Team</StyledLink>
+                  </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link href="#private-hire">Private Hire</Link>
+                  <Link href="#private-hire" passHref>
+                    <StyledLink>Private Hire</StyledLink>
+                  </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link href="#menu">Menu</Link>
+                  <Link href="#menu" passHref>
+                    <StyledLink>Menu</StyledLink>
+                  </Link>
                 </LinkItem>
               </LinkList>
             </LinkGroup>

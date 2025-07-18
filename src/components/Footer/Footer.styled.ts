@@ -130,7 +130,7 @@ export const LinkItem = styled.li`
   }
 `;
 
-export const Link = styled.a`
+export const StyledLink = styled.a`
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);

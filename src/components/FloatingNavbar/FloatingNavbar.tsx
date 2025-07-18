@@ -10,7 +10,7 @@ const FloatingNavbar: React.FC = () => {
 
   const mainLinks = [
     { label: 'Our Restaurants', path: '/restaurants' },
-    { label: 'Menu', path: '/menu' },
+    { label: 'Our Story', path: '/about' },
     { label: 'Contact Us', path: '/contact' },
   ];
 
@@ -25,28 +25,12 @@ const FloatingNavbar: React.FC = () => {
 
   useEffect(() => {
     if (mobileMenuOpen) {
-      const scrollY = window.scrollY;
-      
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
     } else {
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
       document.body.style.overflow = '';
-      
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
     }
 
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
       document.body.style.overflow = '';
     };
   }, [mobileMenuOpen]);
@@ -70,10 +54,11 @@ const FloatingNavbar: React.FC = () => {
             <HamburgerButton 
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
+              $isOpen={mobileMenuOpen}
             >
-              <HamburgerLine />
-              <HamburgerLine />
-              <HamburgerLine />
+              <HamburgerLine $isOpen={mobileMenuOpen} $lineIndex={0} />
+              <HamburgerLine $isOpen={mobileMenuOpen} $lineIndex={1} />
+              <HamburgerLine $isOpen={mobileMenuOpen} $lineIndex={2} />
             </HamburgerButton>
             <Logo onClick={() => handleNavClick('/')}>
               FABRICA GROUP
@@ -120,26 +105,17 @@ const FloatingNavbar: React.FC = () => {
         </MobileMenuHeader>
         
         <MobileMenuContent>
-          <PrimaryNavLinks>
+          <SecondaryNavLinks>
             <MobileNavLink 
-              $primary 
               onClick={() => handleNavClick('/restaurants')}
             >
               Our Restaurants
             </MobileNavLink>
             <MobileNavLink 
-              $primary 
-              onClick={() => {
-                // For now, just close the menu
-                // You can add actual navigation logic later
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => handleNavClick('/about')}
             >
               Our Story
             </MobileNavLink>
-          </PrimaryNavLinks>
-          
-          <SecondaryNavLinks>
             <MobileNavLink 
               onClick={() => {
                 // For now, just close the menu for these items
@@ -157,9 +133,7 @@ const FloatingNavbar: React.FC = () => {
               Our Mission
             </MobileNavLink>
             <MobileNavLink 
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => handleNavClick('/join-our-team')}
             >
               Join the Squadra
             </MobileNavLink>
