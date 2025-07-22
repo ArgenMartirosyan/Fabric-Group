@@ -6,6 +6,7 @@ const FloatingNavbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState<'en' | 'ru' | 'hy'>('en');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
 
   const mainLinks = [
@@ -14,6 +15,13 @@ const FloatingNavbar: React.FC = () => {
     { label: 'Contact Us', path: '/contact' },
   ];
 
+  // Shared language handling function
+  const handleLanguageChange = (newLang: 'en' | 'ru' | 'hy') => {
+    setLang(newLang);
+    // Add any additional language change logic here (e.g., i18n, router locale change)
+    console.log('Language changed to:', newLang);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -21,6 +29,16 @@ const FloatingNavbar: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -76,7 +94,7 @@ const FloatingNavbar: React.FC = () => {
           <LanguageSection>
             <LanguageDropdown
               value={lang}
-              onChange={e => setLang(e.target.value as 'en' | 'ru' | 'hy')}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleLanguageChange(e.target.value as 'en' | 'ru' | 'hy')}
               aria-label="Select language"
             >
               <option value="en">EN</option>
@@ -117,25 +135,19 @@ const FloatingNavbar: React.FC = () => {
               Our Story
             </MobileNavLink>
             <MobileNavLink 
-              onClick={() => {
-                // For now, just close the menu for these items
-                // You can add actual navigation logic later
-                setMobileMenuOpen(false);
-              }}
-            >
-              Gift Voucher
-            </MobileNavLink>
-            <MobileNavLink 
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => handleNavClick('/mission')}
             >
               Our Mission
             </MobileNavLink>
             <MobileNavLink 
               onClick={() => handleNavClick('/join-our-team')}
             >
-              Join the Squadra
+              Careers
+            </MobileNavLink>
+            <MobileNavLink 
+              onClick={() => handleNavClick('/gallery')}
+            >
+              Gallery
             </MobileNavLink>
             <MobileNavLink 
               onClick={() => handleNavClick('/contact')}
@@ -143,6 +155,44 @@ const FloatingNavbar: React.FC = () => {
               Contact Us
             </MobileNavLink>
           </SecondaryNavLinks>
+          
+          {/* Mobile Language Switcher */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '2rem',
+            paddingTop: '1.5rem',
+            borderTop: '1px solid rgba(139, 69, 19, 0.2)',
+            pointerEvents: 'auto'
+          }} className="mobile-language-section">
+            <select
+              value={lang}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleLanguageChange(e.target.value as 'en' | 'ru' | 'hy')}
+              aria-label="Select language"
+              style={{
+                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+                fontSize: '1rem',
+                fontWeight: 600,
+                padding: '0.75rem 1.25rem',
+                borderRadius: '8px',
+                border: '2px solid rgba(139, 69, 19, 0.3)',
+                background: 'rgba(255, 255, 255, 0.9)',
+                color: '#231F20',
+                outline: 'none',
+                cursor: 'pointer',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                transition: 'all 0.3s ease',
+                minWidth: '120px',
+                pointerEvents: 'auto'
+              }}
+            >
+              <option value="en">EN</option>
+              <option value="ru">RU</option>
+              <option value="hy">HY</option>
+            </select>
+          </div>
         </MobileMenuContent>
       </MobileMenu>
     </>

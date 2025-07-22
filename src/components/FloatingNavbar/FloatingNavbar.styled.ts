@@ -283,6 +283,7 @@ export const SecondaryNavLinks = styled.div`
   flex-direction: column;
   gap: 0.25rem;
   margin-top: 0;
+  pointer-events: auto;
   
   @media (min-width: 768px) {
     gap: 0.375rem;
@@ -307,6 +308,8 @@ export const MobileNavLink = styled.a<{ $primary?: boolean; $active?: boolean }>
   border-radius: 8px;
   position: relative;
   overflow: hidden;
+  pointer-events: auto;
+  z-index: 1;
   
   &::before {
     content: '';
@@ -394,6 +397,56 @@ export const LanguageDropdown = styled.select`
   option {
     text-transform: uppercase;
     font-weight: 600;
+  }
+`;
+
+export const MobileLanguageSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(139, 69, 19, 0.2);
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MobileLanguageDropdown = styled.select`
+  font-family: ${({ theme }) => theme.fonts.main};
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: 2px solid rgba(139, 69, 19, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  color: ${({ theme }) => theme.colors.accent};
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+  }
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  option {
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 

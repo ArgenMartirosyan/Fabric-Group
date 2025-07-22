@@ -78,3 +78,17 @@ a:focus {
   outline: 2px solid #D72638;
   outline-offset: 2px;
 }
+
+/* Mobile language section - hide on desktop */
+@media (min-width: 768px) {
+  .mobile-language-section {
+    display: none !important;
+  }
+}
+
+/* Hide mobile language switcher on desktop */
+@media (min-width: 768px) {
+  .mobile-language-section {
+    display: none !important;
+  }
+}

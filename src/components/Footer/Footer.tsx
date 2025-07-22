@@ -29,13 +29,13 @@ const Footer: React.FC = () => {
                   </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link href="/join-our-team" passHref>
-                    <StyledLink>Join Our Team</StyledLink>
+                  <Link href="/restaurants" passHref>
+                    <StyledLink>Restaurants</StyledLink>
                   </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link href="#private-hire" passHref>
-                    <StyledLink>Private Hire</StyledLink>
+                  <Link href="/join-our-team" passHref>
+                    <StyledLink>Careers</StyledLink>
                   </Link>
                 </LinkItem>
                 <LinkItem>
@@ -49,6 +49,11 @@ const Footer: React.FC = () => {
             <LinkGroup>
               <GroupTitle>Contact</GroupTitle>
               <LinkList>
+                <LinkItem>
+                  <ContactEmail href="tel:+37410123456">
+                    +374 10 123 456
+                  </ContactEmail>
+                </LinkItem>
                 <LinkItem>
                   <ContactEmail href="mailto:hello@fabricagroup.am">
                     hello@fabricagroup.am

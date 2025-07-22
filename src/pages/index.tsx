@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import RestaurantJourney from '../components/RestaurantJourney/RestaurantJourney';
 import RestaurantSlider from '../components/RestaurantSlider/RestaurantSlider';
+import MissionBlock from '../components/MissionBlock/MissionBlock';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       
       <RestaurantJourney />
       <RestaurantSlider />
+      <MissionBlock />
     </>
   );
 }

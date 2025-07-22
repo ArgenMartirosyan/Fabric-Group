@@ -204,52 +204,7 @@ const FeatureTag = styled.span`
   font-weight: 500;
 `;
 
-const StatsSection = styled.div`
-  background: linear-gradient(135deg, #8B4513, #A0522D);
-  color: white;
-  padding: 3rem;
-  border-radius: 16px;
-  text-align: center;
-  margin-top: 4rem;
-  
-  @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
-  }
-  
-  h2 {
-    font-family: ${({ theme }) => theme.fonts.heading};
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    
-    @media (max-width: 768px) {
-      font-size: 2rem;
-    }
-  }
-`;
 
-const StatsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-`;
-
-const StatItem = styled.div`
-  .number {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
-    }
-  }
-  
-  .label {
-    font-size: 1.1rem;
-    opacity: 0.9;
-  }
-`;
 
 export default function AboutUsPage() {
   return (
@@ -333,27 +288,7 @@ export default function AboutUsPage() {
           </RestaurantGrid>
         </RestaurantsSection>
 
-        <StatsSection>
-          <h2>Our Impact</h2>
-          <StatsGrid>
-            <StatItem>
-              <div className="number">5</div>
-              <div className="label">Unique Restaurants</div>
-            </StatItem>
-            <StatItem>
-              <div className="number">15+</div>
-              <div className="label">Years of Experience</div>
-            </StatItem>
-            <StatItem>
-              <div className="number">50+</div>
-              <div className="label">Team Members</div>
-            </StatItem>
-            <StatItem>
-              <div className="number">1000+</div>
-              <div className="label">Happy Guests Daily</div>
-            </StatItem>
-          </StatsGrid>
-        </StatsSection>
+
       </AboutContent>
     </AboutContainer>
   );
